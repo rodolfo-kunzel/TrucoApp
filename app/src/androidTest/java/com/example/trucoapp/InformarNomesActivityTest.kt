@@ -1,0 +1,36 @@
+package com.example.trucoapp
+
+import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.clearText
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.junit.Test
+import org.junit.runner.RunWith
+
+@RunWith(AndroidJUnit4::class)
+class InformarNomesActivityTest {
+
+    @Test
+    fun telaInformarNomes_exibeCamposEBotaoConfirmar() {
+        ActivityScenario.launch(InformarNomesActivity::class.java).use {
+            onView(withId(R.id.tvTituloInformarNomes)).check(matches(isDisplayed()))
+            onView(withId(R.id.etNomeJogador1)).check(matches(isDisplayed()))
+            onView(withId(R.id.etNomeJogador2)).check(matches(isDisplayed()))
+            onView(withId(R.id.btnConfirmar)).check(matches(isDisplayed()))
+        }
+    }
+
+    @Test
+    fun digitarNomesEConfirmar_finalizaActivity() {
+        ActivityScenario.launch(InformarNomesActivity::class.java).use {
+            onView(withId(R.id.etNomeJogador1)).perform(clearText(), typeText("Dupla A"))
+            onView(withId(R.id.etNomeJogador2)).perform(clearText(), typeText("Dupla B"))
+            onView(withId(R.id.btnConfirmar)).perform(click())
+        }
+    }
+}

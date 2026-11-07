@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">TrucoApp</string>
+    <string name="title_main">Marcador de Truco</string>
+    <string name="title_historico">Histórico de Jogadas</string>
+    <string name="title_informar_nomes">Informar Nomes</string>
+
+    <string name="label_jogador_1">Jogador 1: </string>
+    <string name="label_jogador_2">Jogador 2: </string>
+    <string name="jogador_1_default">Jogador 1</string>
+    <string name="jogador_2_default">Jogador 2</string>
+    <string name="pontos_iniciais">0</string>
+
+    <string name="btn_minus_1">-1</string>
+    <string name="btn_plus_1">+1</string>
+    <string name="btn_plus_3">+3</string>
+    <string name="btn_plus_6">+6</string>
+    <string name="btn_plus_9">+9</string>
+    <string name="btn_plus_12">+12</string>
+
+    <string name="btn_zerar_partida">Zerar Partida</string>
+    <string name="btn_historico">Hist. Jogadas</string>
+    <string name="btn_zerar_historico">Zerar Histórico</string>
+    <string name="btn_informar_nomes">Inf. Nomes</string>
+    <string name="btn_confirmar">Confirmar</string>
+    <string name="btn_voltar">Voltar ao Marcador</string>
+
+    <string name="dialog_vitoria_titulo">🏆 Partida Finalizada!</string>
+    <string name="dialog_vitoria_botao">Iniciar Nova Partida</string>
+    <string name="emoji_trophy">🏆</string>
+    <string name="emoji_crown">👑 </string>
+
+    <string name="toast_historico_zerado">Histórico e pontuação zerados com sucesso!</string>
+    <string name="toast_partida_zerada">Pontuação da partida zerada!</string>
+    <string name="vencedor_mensagem">%1$s venceu a partida!</string>
+    <string name="format_historico">%1$s: %2$d</string>
+    <string name="format_nome_label">%1$s: </string>
+    <string name="label_vitorias_count">%1$d vitoria(s)</string>
+    <string name="format_lider_historico">👑 %1$s está liderando o histórico!</string>
+    <string name="format_empate_historico">⚖️ Histórico Empatado!</string>
+</resources>
