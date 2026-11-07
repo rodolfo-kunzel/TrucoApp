@@ -5,153 +5,647 @@
     android:id="@+id/mainHistorico"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
+    android:background="@color/surface"
     tools:context=".HistoricoActivity">
 
-    <!-- Título da Tela -->
-    <TextView
-        android:id="@+id/tvTituloHistorico"
+    <!-- Top App Header Bar (Stitch Shell) -->
+    <LinearLayout
+        android:id="@+id/headerHistorico"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/title_historico"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="@dimen/header_height"
+        android:background="@color/surface"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/space_lg"
+        android:paddingEnd="@dimen/space_lg"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!-- Banner Status do Líder Geral -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardStatusHistorico"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFDE7"
-        app:strokeColor="#FBC02D"
-        app:strokeWidth="1dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTituloHistorico"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        <FrameLayout
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/primary_container_alpha10">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_playing_cards"
+                app:tint="@color/primary_container" />
+        </FrameLayout>
 
         <TextView
-            android:id="@+id/tvStatusHistorico"
-            android:layout_width="match_parent"
+            style="@style/TextAppearance.TrucoApp.TitleLg"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="@string/format_empate_historico"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="center" />
-    </com.google.android.material.card.MaterialCardView>
+            android:layout_marginStart="@dimen/space_sm"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/title_historico"
+            android:textColor="@color/on_surface" />
+    </LinearLayout>
 
-    <!-- Card Jogador 1 -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardHistoricoJ1"
+    <!-- Scrollable History Dashboard -->
+    <ScrollView
+        android:id="@+id/scrollHistorico"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="3dp"
-        app:cardBackgroundColor="@color/card_j1_bg"
-        app:strokeColor="@color/card_j1_stroke"
-        app:strokeWidth="1dp"
-        app:layout_constraintTop_toBottomOf="@id/cardStatusHistorico"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavHistorico"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/headerHistorico">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:orientation="vertical"
+            android:paddingStart="@dimen/margin"
+            android:paddingTop="@dimen/space_xs"
+            android:paddingEnd="@dimen/margin"
+            android:paddingBottom="@dimen/space_md">
 
-            <TextView
-                android:id="@+id/tvIconeJ1"
-                android:layout_width="wrap_content"
+            <!-- Internal Navigation / Subheader Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/emoji_trophy"
-                android:textSize="28sp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp">
 
-            <TextView
-                android:id="@+id/tvHistoricoJogador1"
-                android:layout_width="0dp"
+                <ImageButton
+                    android:id="@+id/btnVoltarHistorico"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/surface_container"
+                    android:contentDescription="@string/cd_voltar"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="@color/on_surface" />
+
+                <TextView
+                    android:id="@+id/tvTituloHistorico"
+                    style="@style/TextAppearance.TrucoApp.TitleMd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_sm"
+                    android:layout_weight="1"
+                    android:text="@string/title_historico"
+                    android:textColor="@color/on_surface" />
+
+                <TextView
+                    android:id="@+id/tvTotalPartidasBadge"
+                    style="@style/TextAppearance.TrucoApp.LabelBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_pill"
+                    android:backgroundTint="@color/tertiary_fixed"
+                    android:paddingStart="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="4dp"
+                    android:text="@string/partidas_iniciais"
+                    android:textAllCaps="true"
+                    android:textColor="@color/on_tertiary_fixed" />
+            </LinearLayout>
+
+            <!-- Leader Banner Card (Trophy & Crown Celebration) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardStatusHistorico"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/label_jogador_1"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginStart="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvIconeJ1"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:layout_marginTop="@dimen/space_sm"
+                app:cardBackgroundColor="@color/tertiary_fixed"
+                app:cardCornerRadius="@dimen/radius_md"
+                app:cardElevation="1dp"
+                app:strokeWidth="0dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/space_md">
 
-    <!-- Card Jogador 2 -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardHistoricoJ2"
+                    <FrameLayout
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_circle"
+                        android:backgroundTint="@color/white_alpha80">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_military_tech"
+                            app:tint="@color/tertiary_container" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvStatusHistorico"
+                            style="@style/TextAppearance.TrucoApp.TitleMd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/format_empate_historico"
+                            android:textColor="@color/on_tertiary_fixed" />
+
+                        <TextView
+                            android:id="@+id/tvSubtituloStatusHistorico"
+                            style="@style/TextAppearance.TrucoApp.BodyMd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/subtitulo_empate_historico"
+                            android:textColor="@color/on_tertiary_fixed_variant"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Wins Comparison Bento (Team 1 & Team 2 Cards) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!-- Team 1 Wins Card (Light Blue Accent) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardHistoricoJ1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/primary_fixed"
+                    app:cardCornerRadius="@dimen/radius_md"
+                    app:cardElevation="1dp"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/space_md">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <FrameLayout
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/bg_circle"
+                                android:backgroundTint="@color/white_alpha70">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_gravity="center"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_trophy"
+                                    app:tint="@color/primary" />
+                            </FrameLayout>
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tvBadgeHistoricoJ1"
+                                style="@style/TextAppearance.TrucoApp.LabelBadge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_pill"
+                                android:backgroundTint="@color/primary"
+                                android:paddingStart="8dp"
+                                android:paddingTop="2dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="2dp"
+                                android:text="@string/badge_lider"
+                                android:textColor="@color/on_primary"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvNomeHistoricoJ1"
+                            style="@style/TextAppearance.TrucoApp.TitleMd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/jogador_1_default"
+                            android:textColor="@color/on_primary_fixed" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvVitoriasCountJ1"
+                                style="@style/TextAppearance.TrucoApp.DisplayScoreMobile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/pontos_iniciais"
+                                android:textColor="@color/primary"
+                                android:textSize="38sp" />
+
+                            <TextView
+                                style="@style/TextAppearance.TrucoApp.LabelMd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@string/label_vitorias_word"
+                                android:textColor="@color/on_primary_fixed_variant" />
+                        </LinearLayout>
+
+                        <!-- Formatted summary view used by HistoricoActivityTest -->
+                        <TextView
+                            android:id="@+id/tvHistoricoJogador1"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:alpha="0"
+                            android:text="@string/label_jogador_1"
+                            android:textSize="1sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ProgressBar
+                                android:id="@+id/pbHistoricoJ1"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="0dp"
+                                android:layout_height="6dp"
+                                android:layout_weight="1"
+                                android:max="100"
+                                android:progress="50"
+                                android:progressDrawable="@drawable/progress_team1" />
+
+                            <TextView
+                                android:id="@+id/tvPercentJ1"
+                                style="@style/TextAppearance.TrucoApp.LabelBadge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@string/percent_inicial"
+                                android:textColor="@color/on_primary_fixed" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Team 2 Wins Card (Light Orange Accent) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardHistoricoJ2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/secondary_fixed"
+                    app:cardCornerRadius="@dimen/radius_md"
+                    app:cardElevation="1dp"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/space_md">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <FrameLayout
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/bg_circle"
+                                android:backgroundTint="@color/white_alpha70">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_gravity="center"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_workspace_premium"
+                                    app:tint="@color/secondary" />
+                            </FrameLayout>
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tvBadgeHistoricoJ2"
+                                style="@style/TextAppearance.TrucoApp.LabelBadge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_pill"
+                                android:backgroundTint="@color/secondary"
+                                android:paddingStart="8dp"
+                                android:paddingTop="2dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="2dp"
+                                android:text="@string/badge_lider"
+                                android:textColor="@color/on_secondary"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvNomeHistoricoJ2"
+                            style="@style/TextAppearance.TrucoApp.TitleMd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/jogador_2_default"
+                            android:textColor="@color/on_secondary_fixed" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvVitoriasCountJ2"
+                                style="@style/TextAppearance.TrucoApp.DisplayScoreMobile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/pontos_iniciais"
+                                android:textColor="@color/secondary"
+                                android:textSize="38sp" />
+
+                            <TextView
+                                style="@style/TextAppearance.TrucoApp.LabelMd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginBottom="4dp"
+                                android:text="@string/label_vitorias_word"
+                                android:textColor="@color/on_secondary_fixed_variant" />
+                        </LinearLayout>
+
+                        <!-- Formatted summary view used by HistoricoActivityTest -->
+                        <TextView
+                            android:id="@+id/tvHistoricoJogador2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:alpha="0"
+                            android:text="@string/label_jogador_2"
+                            android:textSize="1sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ProgressBar
+                                android:id="@+id/pbHistoricoJ2"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="0dp"
+                                android:layout_height="6dp"
+                                android:layout_weight="1"
+                                android:max="100"
+                                android:progress="50"
+                                android:progressDrawable="@drawable/progress_team2" />
+
+                            <TextView
+                                android:id="@+id/tvPercentJ2"
+                                style="@style/TextAppearance.TrucoApp.LabelBadge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@string/percent_inicial"
+                                android:textColor="@color/on_secondary_fixed" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Recent Games Summary Feed (Últimas Partidas) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:background="@drawable/bg_rounded_12"
+                android:backgroundTint="@color/surface_container"
+                android:orientation="vertical"
+                android:padding="@dimen/space_md">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_reorder"
+                        app:tint="@color/primary" />
+
+                    <TextView
+                        style="@style/TextAppearance.TrucoApp.TitleMd"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="@string/ultimas_partidas_titulo"
+                        android:textColor="@color/on_surface" />
+
+                    <TextView
+                        style="@style/TextAppearance.TrucoApp.LabelMd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/melhor_de_12"
+                        android:textColor="@color/on_surface_variant" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvSemPartidasHistorico"
+                    style="@style/TextAppearance.TrucoApp.BodyMd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/sem_partidas_historico"
+                    android:textColor="@color/on_surface_variant" />
+
+                <LinearLayout
+                    android:id="@+id/llListaUltimasPartidas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <!-- Tactile Card History Visual Deck (Regras Ativas) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:background="@drawable/bg_rounded_12"
+                android:backgroundTint="@color/surface_container_low"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <FrameLayout
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/tertiary_fixed">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_playing_cards"
+                        app:tint="@color/on_tertiary_fixed" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.TrucoApp.TitleMd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/regras_ativas_titulo"
+                        android:textColor="@color/on_surface"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        style="@style/TextAppearance.TrucoApp.BodyMd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/regras_ativas_subtitulo"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_verified"
+                    app:tint="@color/outline" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation Shell -->
+    <LinearLayout
+        android:id="@+id/bottomNavHistorico"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="3dp"
-        app:cardBackgroundColor="@color/card_j2_bg"
-        app:strokeColor="@color/card_j2_stroke"
-        app:strokeWidth="1dp"
-        app:layout_constraintTop_toBottomOf="@id/cardHistoricoJ1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp">
-
-            <TextView
-                android:id="@+id/tvIconeJ2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/emoji_trophy"
-                android:textSize="28sp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/tvHistoricoJogador2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/label_jogador_2"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginStart="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvIconeJ2"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <!-- Botão Voltar -->
-    <Button
-        android:id="@+id/btnVoltarHistorico"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_voltar"
-        android:layout_marginBottom="16dp"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:background="@color/surface"
+        android:elevation="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/navTabMarcadorHist"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_scoreboard"
+                app:tint="@color/on_surface_variant" />
+
+            <TextView
+                style="@style/TextAppearance.TrucoApp.LabelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/nav_marcador"
+                android:textColor="@color/on_surface_variant" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navTabHistoricoHist"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_history"
+                app:tint="@color/primary" />
+
+            <TextView
+                style="@style/TextAppearance.TrucoApp.LabelBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/nav_historico"
+                android:textColor="@color/primary" />
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

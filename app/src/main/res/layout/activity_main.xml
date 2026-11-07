@@ -1,410 +1,591 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
+    android:background="@color/surface"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
+    <!-- Top App Header Bar (Stitch Shell) -->
+    <LinearLayout
+        android:id="@+id/headerMain"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/header_height"
+        android:background="@color/surface"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/space_lg"
+        android:paddingEnd="@dimen/space_lg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Título -->
+        <FrameLayout
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/primary_container_alpha10">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_playing_cards"
+                app:tint="@color/primary_container" />
+        </FrameLayout>
+
         <TextView
             android:id="@+id/tvTituloMain"
+            style="@style/TextAppearance.TrucoApp.TitleLg"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_sm"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@string/title_main"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
+            android:textColor="@color/on_surface" />
+    </LinearLayout>
+
+    <!-- Scrollable Arena Content -->
+    <ScrollView
+        android:id="@+id/scrollMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerMain">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/margin"
+            android:paddingTop="@dimen/space_xs"
+            android:paddingEnd="@dimen/margin"
+            android:paddingBottom="@dimen/space_sm">
+
+            <!-- Status & Round Indicator Banner -->
+            <LinearLayout
+                android:id="@+id/bannerRodada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_12"
+                android:backgroundTint="@color/surface_container"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/space_md"
+                android:paddingTop="6dp"
+                android:paddingEnd="@dimen/space_md"
+                android:paddingBottom="6dp">
+
+                <View
+                    android:id="@+id/dotStatusRodada"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/secondary_container" />
+
+                <TextView
+                    android:id="@+id/tvStatusRodada"
+                    style="@style/TextAppearance.TrucoApp.LabelBadge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/status_rodada_andamento"
+                    android:textAllCaps="true"
+                    android:textColor="@color/on_surface_variant" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_timer"
+                    app:tint="@color/on_surface_variant" />
+
+                <TextView
+                    style="@style/TextAppearance.TrucoApp.LabelMd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/meta_12_pontos"
+                    android:textColor="@color/on_surface" />
+            </LinearLayout>
+
+            <!-- TEAM 1 SCORE CARD (Ice Blue) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardJogador1"
+                style="@style/Widget.TrucoApp.ScoreCard.Team1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_md">
+
+                    <!-- Card Header Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:id="@+id/badgeIconContainerJ1"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/bg_circle"
+                            android:backgroundTint="@color/tertiary_fixed">
+
+                            <ImageView
+                                android:id="@+id/ivIconJ1"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_trophy"
+                                app:tint="@color/on_tertiary_fixed" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tvNomeJogador1"
+                            style="@style/TextAppearance.TrucoApp.TitleMd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/label_jogador_1"
+                            android:textColor="@color/primary" />
+
+                        <TextView
+                            android:id="@+id/tvLiderJ1"
+                            style="@style/Widget.TrucoApp.Badge.Leader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="@string/badge_lider"
+                            android:visibility="gone"
+                            tools:visibility="visible" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tvTentosJ1"
+                            style="@style/TextAppearance.TrucoApp.LabelBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tentos_iniciais"
+                            android:textAllCaps="true"
+                            android:textColor="@color/primary" />
+                    </LinearLayout>
+
+                    <!-- Monumental Counter -->
+                    <TextView
+                        android:id="@+id/tvPontosJogador1"
+                        style="@style/TextAppearance.TrucoApp.DisplayScoreMobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/pontos_iniciais"
+                        android:textColor="@color/primary" />
+
+                    <!-- Team 1 Escalation Action Row (6 Pill Buttons Inside Card) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="6">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnMinus1J1"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_minus_1"
+                            app:backgroundTint="@color/btn_minus_1_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPlus1J1"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_plus_1"
+                            app:backgroundTint="@color/btn_plus_1_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPlus3J1"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_plus_3"
+                            app:backgroundTint="@color/btn_plus_3_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPlus6J1"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_plus_6"
+                            app:backgroundTint="@color/btn_plus_6_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPlus9J1"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_plus_9"
+                            app:backgroundTint="@color/btn_plus_9_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPlus12J1"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_plus_12"
+                            app:backgroundTint="@color/btn_plus_12_color" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- VS DIVIDER BADGE -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/surface_variant" />
+
+                <TextView
+                    style="@style/TextAppearance.TrucoApp.LabelBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_pill"
+                    android:backgroundTint="@color/surface_container_high"
+                    android:paddingStart="12dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/badge_vs"
+                    android:textColor="@color/on_surface_variant" />
+            </FrameLayout>
+
+            <!-- TEAM 2 SCORE CARD (Warm Amber) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardJogador2"
+                style="@style/Widget.TrucoApp.ScoreCard.Team2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_md">
+
+                    <!-- Card Header Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:id="@+id/badgeIconContainerJ2"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/bg_circle"
+                            android:backgroundTint="@color/secondary">
+
+                            <ImageView
+                                android:id="@+id/ivIconJ2"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_group"
+                                app:tint="@color/on_secondary" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:id="@+id/tvNomeJogador2"
+                            style="@style/TextAppearance.TrucoApp.TitleMd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/label_jogador_2"
+                            android:textColor="@color/secondary" />
+
+                        <TextView
+                            android:id="@+id/tvLiderJ2"
+                            style="@style/Widget.TrucoApp.Badge.Leader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="@string/badge_lider"
+                            android:visibility="gone"
+                            tools:visibility="visible" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tvTentosJ2"
+                            style="@style/TextAppearance.TrucoApp.LabelBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tentos_iniciais"
+                            android:textAllCaps="true"
+                            android:textColor="@color/secondary" />
+                    </LinearLayout>
+
+                    <!-- Monumental Counter -->
+                    <TextView
+                        android:id="@+id/tvPontosJogador2"
+                        style="@style/TextAppearance.TrucoApp.DisplayScoreMobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/pontos_iniciais"
+                        android:textColor="@color/secondary" />
+
+                    <!-- Team 2 Escalation Action Row (6 Pill Buttons Inside Card) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="6">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnMinus1J2"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_minus_1"
+                            app:backgroundTint="@color/btn_minus_1_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPlus1J2"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_plus_1"
+                            app:backgroundTint="@color/btn_plus_1_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPlus3J2"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_plus_3"
+                            app:backgroundTint="@color/btn_plus_3_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPlus6J2"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_plus_6"
+                            app:backgroundTint="@color/btn_plus_6_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPlus9J2"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_plus_9"
+                            app:backgroundTint="@color/btn_plus_9_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPlus12J2"
+                            style="@style/Widget.TrucoApp.Button.Escalation"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_weight="1"
+                            android:text="@string/btn_plus_12"
+                            app:backgroundTint="@color/btn_plus_12_color" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- QUICK ACTION GRID (2x2 Compact Material 3 Tonal Buttons) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnZerarPartida"
+                    style="@style/Widget.TrucoApp.Button.QuickAction"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/btn_zerar_partida"
+                    app:backgroundTint="@color/surface_container_high"
+                    app:icon="@drawable/ic_restart"
+                    app:iconTint="@color/error" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnZerarHistorico"
+                    style="@style/Widget.TrucoApp.Button.QuickAction"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/btn_zerar_historico"
+                    app:backgroundTint="@color/surface_container_high"
+                    app:icon="@drawable/ic_delete_sweep"
+                    app:iconTint="@color/outline" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnHistorico"
+                    style="@style/Widget.TrucoApp.Button.QuickAction"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/btn_historico"
+                    app:backgroundTint="@color/surface_container"
+                    app:icon="@drawable/ic_history"
+                    app:iconTint="@color/primary" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnInformarNomes"
+                    style="@style/Widget.TrucoApp.Button.QuickAction"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/btn_informar_nomes"
+                    app:backgroundTint="@color/surface_container"
+                    app:icon="@drawable/ic_badge"
+                    app:iconTint="@color/secondary" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation Shell -->
+    <LinearLayout
+        android:id="@+id/bottomNavMain"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:background="@color/surface"
+        android:elevation="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/navTabMarcador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:orientation="vertical">
 
-        <!-- Card Jogador 1 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardJogador1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="3dp"
-            app:cardBackgroundColor="@color/card_j1_bg"
-            app:strokeColor="@color/card_j1_stroke"
-            app:strokeWidth="1dp"
-            app:layout_constraintTop_toBottomOf="@id/tvTituloMain"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_scoreboard"
+                app:tint="@color/primary" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <TextView
+                style="@style/TextAppearance.TrucoApp.LabelBadge"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="12dp">
+                android:layout_marginTop="2dp"
+                android:text="@string/nav_marcador"
+                android:textColor="@color/primary" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvLiderJ1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/emoji_crown"
-                    android:textSize="18sp"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/tvNomeJogador1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_jogador_1"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tvLiderJ1"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvPontosJogador1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pontos_iniciais"
-                    android:textSize="48sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/btn_plus_1_color"
-                    android:layout_marginTop="2dp"
-                    app:layout_constraintTop_toBottomOf="@id/tvNomeJogador1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Botões de Pontuação do Jogador 1 -->
-        <Button
-            android:id="@+id/btnMinus1J1"
+        <LinearLayout
+            android:id="@+id/navTabHistorico"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_minus_1"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_minus_1_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintTop_toBottomOf="@id/cardJogador1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus1J1"
-            app:layout_constraintHorizontal_chainStyle="spread" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnPlus1J1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_plus_1"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_plus_1_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintTop_toTopOf="@id/btnMinus1J1"
-            app:layout_constraintStart_toEndOf="@id/btnMinus1J1"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus3J1" />
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_history"
+                app:tint="@color/on_surface_variant" />
 
-        <Button
-            android:id="@+id/btnPlus3J1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_plus_3"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_plus_3_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintTop_toTopOf="@id/btnMinus1J1"
-            app:layout_constraintStart_toEndOf="@id/btnPlus1J1"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus6J1" />
-
-        <Button
-            android:id="@+id/btnPlus6J1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_plus_6"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_plus_6_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintTop_toTopOf="@id/btnMinus1J1"
-            app:layout_constraintStart_toEndOf="@id/btnPlus3J1"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus9J1" />
-
-        <Button
-            android:id="@+id/btnPlus9J1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_plus_9"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_plus_9_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintTop_toTopOf="@id/btnMinus1J1"
-            app:layout_constraintStart_toEndOf="@id/btnPlus6J1"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus12J1" />
-
-        <Button
-            android:id="@+id/btnPlus12J1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_plus_12"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_plus_12_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            app:layout_constraintTop_toTopOf="@id/btnMinus1J1"
-            app:layout_constraintStart_toEndOf="@id/btnPlus9J1"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <!-- Card Jogador 2 -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardJogador2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="3dp"
-            app:cardBackgroundColor="@color/card_j2_bg"
-            app:strokeColor="@color/card_j2_stroke"
-            app:strokeWidth="1dp"
-            app:layout_constraintTop_toBottomOf="@id/btnMinus1J1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <TextView
+                style="@style/TextAppearance.TrucoApp.LabelBadge"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="12dp">
+                android:layout_marginTop="2dp"
+                android:text="@string/nav_historico"
+                android:textColor="@color/on_surface_variant" />
+        </LinearLayout>
+    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvLiderJ2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/emoji_crown"
-                    android:textSize="18sp"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/tvNomeJogador2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_jogador_2"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tvLiderJ2"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvPontosJogador2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pontos_iniciais"
-                    android:textSize="48sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/btn_plus_6_color"
-                    android:layout_marginTop="2dp"
-                    app:layout_constraintTop_toBottomOf="@id/tvNomeJogador2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Botões de Pontuação do Jogador 2 -->
-        <Button
-            android:id="@+id/btnMinus1J2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_minus_1"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_minus_1_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintTop_toBottomOf="@id/cardJogador2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus1J2"
-            app:layout_constraintHorizontal_chainStyle="spread" />
-
-        <Button
-            android:id="@+id/btnPlus1J2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_plus_1"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_plus_1_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintTop_toTopOf="@id/btnMinus1J2"
-            app:layout_constraintStart_toEndOf="@id/btnMinus1J2"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus3J2" />
-
-        <Button
-            android:id="@+id/btnPlus3J2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_plus_3"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_plus_3_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintTop_toTopOf="@id/btnMinus1J2"
-            app:layout_constraintStart_toEndOf="@id/btnPlus1J2"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus6J2" />
-
-        <Button
-            android:id="@+id/btnPlus6J2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_plus_6"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_plus_6_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintTop_toTopOf="@id/btnMinus1J2"
-            app:layout_constraintStart_toEndOf="@id/btnPlus3J2"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus9J2" />
-
-        <Button
-            android:id="@+id/btnPlus9J2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_plus_9"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_plus_9_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintTop_toTopOf="@id/btnMinus1J2"
-            app:layout_constraintStart_toEndOf="@id/btnPlus6J2"
-            app:layout_constraintEnd_toStartOf="@id/btnPlus12J2" />
-
-        <Button
-            android:id="@+id/btnPlus12J2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_plus_12"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/btn_plus_12_color"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:minWidth="0dp"
-            android:insetLeft="0dp"
-            android:insetRight="0dp"
-            app:layout_constraintTop_toTopOf="@id/btnMinus1J2"
-            app:layout_constraintStart_toEndOf="@id/btnPlus9J2"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <!-- Botões de Ação Organizados em Grid 2x2 Compacto -->
-        <Button
-            android:id="@+id/btnZerarPartida"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_zerar_partida"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintTop_toBottomOf="@id/btnMinus1J2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnZerarHistorico"
-            app:layout_constraintHorizontal_chainStyle="spread" />
-
-        <Button
-            android:id="@+id/btnZerarHistorico"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_zerar_historico"
-            app:layout_constraintTop_toTopOf="@id/btnZerarPartida"
-            app:layout_constraintStart_toEndOf="@id/btnZerarPartida"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Button
-            android:id="@+id/btnHistorico"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_historico"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintTop_toBottomOf="@id/btnZerarPartida"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnInformarNomes"
-            app:layout_constraintHorizontal_chainStyle="spread" />
-
-        <Button
-            android:id="@+id/btnInformarNomes"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_informar_nomes"
-            app:layout_constraintTop_toTopOf="@id/btnHistorico"
-            app:layout_constraintStart_toEndOf="@id/btnHistorico"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

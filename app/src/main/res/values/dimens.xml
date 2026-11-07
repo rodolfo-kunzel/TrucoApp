@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Stitch Tento Tracker Spacing Scale -->
+    <dimen name="space_xs">4dp</dimen>
+    <dimen name="space_sm">8dp</dimen>
+    <dimen name="space_md">12dp</dimen>
+    <dimen name="space_lg">16dp</dimen>
+    <dimen name="space_xl">24dp</dimen>
+
+    <dimen name="gutter">12dp</dimen>
+    <dimen name="gutter_tablet">16dp</dimen>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="margin_tablet">24dp</dimen>
+
+    <!-- Stitch Tento Tracker Corner Radii (ROUND_EIGHT) -->
+    <dimen name="radius_sm">4dp</dimen>
+    <dimen name="radius_default">8dp</dimen>
+    <dimen name="radius_md">12dp</dimen>
+    <dimen name="radius_lg">16dp</dimen>
+    <dimen name="radius_xl">24dp</dimen>
+    <dimen name="radius_full">999dp</dimen>
+
+    <!-- Stitch Component Dimensions -->
+    <dimen name="header_height">56dp</dimen>
+    <dimen name="bottom_nav_height">64dp</dimen>
+    <dimen name="btn_escalation_height">40dp</dimen>
+    <dimen name="btn_quick_action_height">48dp</dimen>
+    <dimen name="btn_primary_cta_height">52dp</dimen>
+    <dimen name="btn_secondary_cta_height">46dp</dimen>
+    <dimen name="card_stroke_normal">1dp</dimen>
+    <dimen name="card_stroke_leader">2.5dp</dimen>
+</resources>

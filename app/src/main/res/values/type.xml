@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ==========================================================
+         Stitch Tento Tracker Typography System
+         Headline & Display: Space Grotesk
+         Body & Labels: Inter
+         ========================================================== -->
+
+    <!-- display-score: Space Grotesk, 54sp, weight 700, lineHeight 60sp, letterSpacing -0.02 -->
+    <style name="TextAppearance.TrucoApp.DisplayScore" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="fontFamily">@font/space_grotesk</item>
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textSize">54sp</item>
+        <item name="lineHeight">60sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+    </style>
+
+    <!-- display-score-mobile: Space Grotesk, 48sp, weight 700, lineHeight 52sp, letterSpacing -0.02 -->
+    <style name="TextAppearance.TrucoApp.DisplayScoreMobile" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="fontFamily">@font/space_grotesk</item>
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textSize">48sp</item>
+        <item name="lineHeight">52sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+    </style>
+
+    <!-- headline-lg: Space Grotesk, 32sp, weight 700, lineHeight 40sp -->
+    <style name="TextAppearance.TrucoApp.HeadlineLg" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="fontFamily">@font/space_grotesk</item>
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textSize">32sp</item>
+        <item name="lineHeight">40sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- headline-md: Space Grotesk, 24sp, weight 600, lineHeight 32sp -->
+    <style name="TextAppearance.TrucoApp.HeadlineMd" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/space_grotesk</item>
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- title-lg: Inter, 20sp, weight 600, lineHeight 28sp -->
+    <style name="TextAppearance.TrucoApp.TitleLg" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">28sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- title-md: Inter, 16sp, weight 600, lineHeight 24sp -->
+    <style name="TextAppearance.TrucoApp.TitleMd" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- body-lg: Inter, 16sp, weight 400, lineHeight 24sp -->
+    <style name="TextAppearance.TrucoApp.BodyLg" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- body-md: Inter, 14sp, weight 400, lineHeight 20sp -->
+    <style name="TextAppearance.TrucoApp.BodyMd" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- label-lg: Inter, 14sp, weight 600, lineHeight 20sp, letterSpacing 0.01 -->
+    <style name="TextAppearance.TrucoApp.LabelLg" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <!-- label-md: Inter, 12sp, weight 600, lineHeight 16sp, letterSpacing 0.02 -->
+    <style name="TextAppearance.TrucoApp.LabelMd" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <!-- label-badge: Space Grotesk, 11sp, weight 700, lineHeight 14sp, letterSpacing 0.04 -->
+    <style name="TextAppearance.TrucoApp.LabelBadge" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/space_grotesk</item>
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textSize">11sp</item>
+        <item name="lineHeight">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.04</item>
+    </style>
+
+    <!-- ==========================================================
+         Stitch Tento Tracker Shape Appearances (ROUND_EIGHT)
+         ========================================================== -->
+    <style name="ShapeAppearance.TrucoApp.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_default</item>
+    </style>
+
+    <style name="ShapeAppearance.TrucoApp.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_md</item>
+    </style>
+
+    <style name="ShapeAppearance.TrucoApp.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_lg</item>
+    </style>
+
+    <style name="ShapeAppearance.TrucoApp.Pill" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

@@ -9,6 +9,7 @@
     <string name="jogador_1_default">Jogador 1</string>
     <string name="jogador_2_default">Jogador 2</string>
     <string name="pontos_iniciais">0</string>
+    <string name="pontos_vitoria_max">12</string>
 
     <string name="btn_minus_1">-1</string>
     <string name="btn_plus_1">+1</string>
@@ -21,13 +22,64 @@
     <string name="btn_historico">Hist. Jogadas</string>
     <string name="btn_zerar_historico">Zerar Histórico</string>
     <string name="btn_informar_nomes">Inf. Nomes</string>
-    <string name="btn_confirmar">Confirmar</string>
+    <string name="btn_confirmar">Confirmar Nomes</string>
+    <string name="btn_restaurar_padrao">Restaurar Padrão</string>
     <string name="btn_voltar">Voltar ao Marcador</string>
+
+    <string name="cd_voltar">Voltar</string>
+    <string name="cd_limpar_jogador_1">Limpar Jogador 1</string>
+    <string name="cd_limpar_jogador_2">Limpar Jogador 2</string>
 
     <string name="dialog_vitoria_titulo">🏆 Partida Finalizada!</string>
     <string name="dialog_vitoria_botao">Iniciar Nova Partida</string>
     <string name="emoji_trophy">🏆</string>
     <string name="emoji_crown">👑 </string>
+    <string name="badge_lider">LÍDER</string>
+    <string name="badge_vs">VS</string>
+
+    <string name="status_rodada_andamento">RODADA EM ANDAMENTO</string>
+    <string name="status_mao_de_11">MÃO DE 11 ATIVA</string>
+    <string name="meta_12_pontos">12 PONTOS</string>
+    <string name="tentos_iniciais">TENTOS: 0</string>
+    <string name="format_tentos">TENTOS: %1$d</string>
+
+    <string name="nav_marcador">MARCADOR</string>
+    <string name="nav_historico">HISTÓRICO</string>
+
+    <string name="identificacao_titulo">Identificação da Partida</string>
+    <string name="identificacao_subtitulo">Personalize os nomes dos jogadores ou duplas para o placar e histórico.</string>
+    <string name="sugestoes_rapidas">SUGESTÕES RÁPIDAS</string>
+    <string name="truco_classico">TRUCO CLÁSSICO</string>
+    <string name="preset_nos_eles">Nós vs Eles</string>
+    <string name="preset_mesa">Mesa 1 vs Mesa 2</string>
+    <string name="preset_dupla">Dupla A vs Dupla B</string>
+    <string name="preset_familia">Família</string>
+    <string name="label_input_j1">JOGADOR 1 (TIME AZUL)</string>
+    <string name="label_input_j2">JOGADOR 2 (TIME LARANJA)</string>
+    <string name="hint_digite_nome">Digite o nome…</string>
+    <string name="helper_input_j1">Ex: Nós, Time Azul, Carlos &amp; Ana</string>
+    <string name="helper_input_j2">Ex: Eles, Time Laranja, Pedro &amp; Lucas</string>
+
+    <string name="partidas_iniciais">0 PARTIDAS</string>
+    <string name="format_partidas_badge">%1$d PARTIDAS</string>
+    <string name="format_vantagem_historico">Vantagem de %1$d vitória(s) na série atual</string>
+    <string name="subtitulo_empate_historico">Tudo igual na série atual de partidas</string>
+    <string name="label_vitorias_word">vitórias</string>
+    <string name="percent_inicial">50%</string>
+    <string name="format_percent">%1$d%%</string>
+    <string name="ultimas_partidas_titulo">Últimas Partidas</string>
+    <string name="melhor_de_12">Melhor de 12 pts</string>
+    <string name="sem_partidas_historico">Nenhuma partida finalizada ainda.</string>
+    <string name="format_partida_numero">#%1$d</string>
+    <string name="format_placar_separador">x</string>
+    <string name="detalhe_vitoria_ponto">Finalizada com Ponto (+1)</string>
+    <string name="detalhe_vitoria_truco">Finalizada com Truco (+3)</string>
+    <string name="detalhe_vitoria_seis">Finalizada com Seis (+6)</string>
+    <string name="detalhe_vitoria_nove">Finalizada com Nove (+9)</string>
+    <string name="detalhe_vitoria_doze">Finalizada com Doze (+12)</string>
+    <string name="detalhe_vitoria_padrao">Finalizada (+%1$d)</string>
+    <string name="regras_ativas_titulo">Regras Ativas</string>
+    <string name="regras_ativas_subtitulo">Truco Paulista • Mão de 11 travada</string>
 
     <string name="toast_historico_zerado">Histórico e pontuação zerados com sucesso!</string>
     <string name="toast_partida_zerada">Pontuação da partida zerada!</string>
@@ -35,6 +87,6 @@
     <string name="format_historico">%1$s: %2$d</string>
     <string name="format_nome_label">%1$s: </string>
     <string name="label_vitorias_count">%1$d vitoria(s)</string>
-    <string name="format_lider_historico">👑 %1$s está liderando o histórico!</string>
+    <string name="format_lider_historico">👑 %1$s está liderando!</string>
     <string name="format_empate_historico">⚖️ Histórico Empatado!</string>
 </resources>

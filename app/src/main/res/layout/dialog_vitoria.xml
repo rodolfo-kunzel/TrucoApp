@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/surface_container_lowest"
+    app:cardCornerRadius="@dimen/radius_lg"
+    app:cardElevation="8dp"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/space_xl">
+
+        <!-- Trophy Celebration Ring -->
+        <FrameLayout
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginBottom="@dimen/space_md"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/tertiary_fixed">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_trophy"
+                app:tint="@color/on_tertiary_fixed" />
+        </FrameLayout>
+
+        <!-- Title & Win Description -->
+        <TextView
+            android:id="@+id/tvDialogVitoriaTitulo"
+            style="@style/TextAppearance.TrucoApp.HeadlineMd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/dialog_vitoria_titulo"
+            android:textColor="@color/on_surface" />
+
+        <TextView
+            android:id="@+id/tvDialogVitoriaMensagem"
+            style="@style/TextAppearance.TrucoApp.BodyLg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xs"
+            android:layout_marginBottom="@dimen/space_lg"
+            android:gravity="center"
+            android:textColor="@color/on_surface_variant" />
+
+        <!-- Match Stats Snapshot -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_lg"
+            android:background="@drawable/bg_rounded_12"
+            android:backgroundTint="@color/surface_container_low"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvDialogNomeJ1"
+                    style="@style/TextAppearance.TrucoApp.LabelBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/jogador_1_default"
+                    android:textAllCaps="true"
+                    android:textColor="@color/primary" />
+
+                <TextView
+                    android:id="@+id/tvDialogPontosJ1"
+                    style="@style/TextAppearance.TrucoApp.TitleLg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pontos_vitoria_max"
+                    android:textColor="@color/primary" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:background="@color/surface_variant" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvDialogNomeJ2"
+                    style="@style/TextAppearance.TrucoApp.LabelBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/jogador_2_default"
+                    android:textAllCaps="true"
+                    android:textColor="@color/secondary" />
+
+                <TextView
+                    android:id="@+id/tvDialogPontosJ2"
+                    style="@style/TextAppearance.TrucoApp.TitleLg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pontos_iniciais"
+                    android:textColor="@color/secondary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Action Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDialogNovaPartida"
+            style="@style/Widget.TrucoApp.Button.PrimaryPill"
+            android:layout_width="match_parent"
+            android:text="@string/dialog_vitoria_botao"
+            app:icon="@drawable/ic_restart" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

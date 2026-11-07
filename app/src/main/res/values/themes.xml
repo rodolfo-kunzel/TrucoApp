@@ -1,8 +1,92 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.TrucoApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!-- ==========================================================
+         Stitch Design System: "Tento Tracker" Theme
+         Color Mode: LIGHT | Variant: FIDELITY | Roundness: ROUND_EIGHT
+         Headline Font: Space Grotesk | Body & Label Font: Inter
+         ========================================================== -->
+    <style name="Base.Theme.TrucoApp" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary Roles -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+        <item name="colorPrimaryFixed">@color/primary_fixed</item>
+        <item name="colorPrimaryFixedDim">@color/primary_fixed_dim</item>
+        <item name="colorOnPrimaryFixed">@color/on_primary_fixed</item>
+        <item name="colorOnPrimaryFixedVariant">@color/on_primary_fixed_variant</item>
+        <item name="colorPrimaryInverse">@color/inverse_primary</item>
+
+        <!-- Secondary Roles -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <item name="colorSecondaryContainer">@color/secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/on_secondary_container</item>
+        <item name="colorSecondaryFixed">@color/secondary_fixed</item>
+        <item name="colorSecondaryFixedDim">@color/secondary_fixed_dim</item>
+        <item name="colorOnSecondaryFixed">@color/on_secondary_fixed</item>
+        <item name="colorOnSecondaryFixedVariant">@color/on_secondary_fixed_variant</item>
+
+        <!-- Tertiary Roles -->
+        <item name="colorTertiary">@color/tertiary</item>
+        <item name="colorOnTertiary">@color/on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/on_tertiary_container</item>
+        <item name="colorTertiaryFixed">@color/tertiary_fixed</item>
+        <item name="colorTertiaryFixedDim">@color/tertiary_fixed_dim</item>
+        <item name="colorOnTertiaryFixed">@color/on_tertiary_fixed</item>
+        <item name="colorOnTertiaryFixedVariant">@color/on_tertiary_fixed_variant</item>
+
+        <!-- Error Roles -->
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/on_error</item>
+        <item name="colorErrorContainer">@color/error_container</item>
+        <item name="colorOnErrorContainer">@color/on_error_container</item>
+
+        <!-- Surface & Background Roles -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/on_background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+        <item name="colorSurfaceDim">@color/surface_dim</item>
+        <item name="colorSurfaceBright">@color/surface_bright</item>
+        <item name="colorSurfaceContainerLowest">@color/surface_container_lowest</item>
+        <item name="colorSurfaceContainerLow">@color/surface_container_low</item>
+        <item name="colorSurfaceContainer">@color/surface_container</item>
+        <item name="colorSurfaceContainerHigh">@color/surface_container_high</item>
+        <item name="colorSurfaceContainerHighest">@color/surface_container_highest</item>
+        <item name="colorSurfaceInverse">@color/inverse_surface</item>
+        <item name="colorOnSurfaceInverse">@color/inverse_on_surface</item>
+
+        <!-- Outline Roles -->
+        <item name="colorOutline">@color/outline</item>
+        <item name="colorOutlineVariant">@color/outline_variant</item>
+
+        <!-- Typography Roles (Space Grotesk + Inter) -->
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.TrucoApp.DisplayScore</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.TrucoApp.DisplayScoreMobile</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.TrucoApp.HeadlineLg</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.TrucoApp.HeadlineMd</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.TrucoApp.TitleLg</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.TrucoApp.TitleMd</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.TrucoApp.BodyLg</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.TrucoApp.BodyMd</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.TrucoApp.LabelLg</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.TrucoApp.LabelMd</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.TrucoApp.LabelBadge</item>
+
+        <!-- Shape Roles (ROUND_EIGHT) -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.TrucoApp.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.TrucoApp.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.TrucoApp.LargeComponent</item>
+
+        <!-- System Bars -->
+        <item name="android:statusBarColor">@color/surface</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.TrucoApp" parent="Base.Theme.TrucoApp" />

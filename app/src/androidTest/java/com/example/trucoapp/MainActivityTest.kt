@@ -1,6 +1,8 @@
 package com.example.trucoapp
 
+import android.content.Context
 import androidx.test.core.app.ActivityScenario
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.click
@@ -12,11 +14,23 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.CoreMatchers.not
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
+
+    @Before
+    fun setupDatabase() {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val dbHelper = TrucoDatabaseHelper(context)
+        dbHelper.limparHistoricoERestaurarPadrao(
+            context.getString(R.string.jogador_1_default),
+            context.getString(R.string.jogador_2_default)
+        )
+        dbHelper.close()
+    }
 
     @Test
     fun telaPrincipal_exibeComponentesIniciais() {
@@ -54,21 +68,21 @@ class MainActivityTest {
     @Test
     fun liderApareceEInverteConformePontuacao() {
         ActivityScenario.launch(MainActivity::class.java).use {
-            // Inicialmente sem coroa de líder
+            // Inicialmente sem badge de líder
             onView(withId(R.id.tvLiderJ1)).check(matches(not(isDisplayed())))
             onView(withId(R.id.tvLiderJ2)).check(matches(not(isDisplayed())))
 
-            // Jogador 1 pontua -> Coroa no J1
+            // Jogador 1 pontua -> Líder no J1
             onView(withId(R.id.btnPlus3J1)).perform(click())
             onView(withId(R.id.tvLiderJ1)).check(matches(isDisplayed()))
             onView(withId(R.id.tvLiderJ2)).check(matches(not(isDisplayed())))
 
-            // Jogador 2 pontua +6 -> Coroa no J2
+            // Jogador 2 pontua +6 -> Líder no J2
             onView(withId(R.id.btnPlus6J2)).perform(click())
             onView(withId(R.id.tvLiderJ2)).check(matches(isDisplayed()))
             onView(withId(R.id.tvLiderJ1)).check(matches(not(isDisplayed())))
 
-            // Empate 6x6 -> Nenhuma coroa visível
+            // Empate 6x6 -> Nenhum badge visível
             onView(withId(R.id.btnPlus3J1)).perform(click())
             onView(withId(R.id.tvLiderJ1)).check(matches(not(isDisplayed())))
             onView(withId(R.id.tvLiderJ2)).check(matches(not(isDisplayed())))

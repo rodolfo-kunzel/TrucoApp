@@ -23,6 +23,7 @@ class TrucoGameLogicTest {
         assertEquals(0, controller.vitoriasJogador2)
         assertEquals("Especialistas", controller.nomeJogador1)
         assertEquals("Desafiantes", controller.nomeJogador2)
+        assertTrue(controller.historicoPartidas.isEmpty())
     }
 
     @Test
@@ -53,7 +54,8 @@ class TrucoGameLogicTest {
     }
 
     @Test
-    fun jogador1VenceAoAtingir12Pontos() {
+    fun jogador1VenceAoAtingir12Pontos_eRegistraPartidaNoHistorico() {
+        controller.adicionarPontos(2, 8)
         controller.adicionarPontos(1, 9)
         assertFalse(controller.adicionarPontos(1, 1)) // 10 pontos
         assertEquals(10, controller.pontosJogador1)
@@ -63,6 +65,14 @@ class TrucoGameLogicTest {
         assertEquals(1, controller.vitoriasJogador1)
         assertEquals(0, controller.pontosJogador1)
         assertEquals(0, controller.pontosJogador2)
+
+        assertEquals(1, controller.historicoPartidas.size)
+        val partida = controller.historicoPartidas.first()
+        assertEquals(1, partida.numeroPartida)
+        assertEquals(1, partida.vencedorJogador)
+        assertEquals(12, partida.pontosJogador1)
+        assertEquals(8, partida.pontosJogador2)
+        assertEquals(3, partida.ultimoLancePontos)
     }
 
     @Test
@@ -72,6 +82,8 @@ class TrucoGameLogicTest {
         assertEquals(1, controller.vitoriasJogador2)
         assertEquals(0, controller.pontosJogador1)
         assertEquals(0, controller.pontosJogador2)
+        assertEquals(1, controller.historicoPartidas.size)
+        assertEquals(2, controller.historicoPartidas.first().vencedorJogador)
     }
 
     @Test
@@ -86,10 +98,11 @@ class TrucoGameLogicTest {
         assertEquals(0, controller.pontosJogador2)
         assertEquals(1, controller.vitoriasJogador1)
         assertEquals("Especialistas", controller.nomeJogador1)
+        assertEquals(1, controller.historicoPartidas.size)
     }
 
     @Test
-    fun zerarHistorico_resetaPontosVitoriasENomesPadrao() {
+    fun zerarHistorico_resetaPontosVitoriasNomesEPartidas() {
         controller.adicionarPontos(1, 12) // J1 ganha
         controller.adicionarPontos(2, 6)
 
@@ -101,6 +114,7 @@ class TrucoGameLogicTest {
         assertEquals(0, controller.vitoriasJogador2)
         assertEquals("Jogador 1", controller.nomeJogador1)
         assertEquals("Jogador 2", controller.nomeJogador2)
+        assertTrue(controller.historicoPartidas.isEmpty())
     }
 
     @Test

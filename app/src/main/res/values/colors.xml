@@ -3,18 +3,95 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Cores dos botões de Truco -->
-    <color name="btn_minus_1_color">#757575</color>
-    <color name="btn_plus_1_color">#1976D2</color>
-    <color name="btn_plus_3_color">#7B1FA2</color>
-    <color name="btn_plus_6_color">#E65100</color>
-    <color name="btn_plus_9_color">#C2185B</color>
-    <color name="btn_plus_12_color">#D32F2F</color>
+    <!-- ==========================================================
+         Stitch Design System: "Tento Tracker" Named Colors
+         Color Mode: LIGHT | Variant: FIDELITY
+         Custom Seed: #1565C0 | Secondary: #E65100 | Tertiary: #FFB300
+         ========================================================== -->
 
-    <!-- Cores dos cartões dos jogadores -->
-    <color name="card_j1_bg">#F3F8FF</color>
-    <color name="card_j2_bg">#FFF8F0</color>
-    <color name="card_j1_stroke">#BBDEFB</color>
-    <color name="card_j2_stroke">#FFE0B2</color>
+    <!-- Surface & Background Foundations -->
+    <color name="background">#FDF8FD</color>
+    <color name="on_background">#1C1B1F</color>
+    <color name="surface">#FDF8FD</color>
+    <color name="surface_dim">#DDD9DE</color>
+    <color name="surface_bright">#FDF8FD</color>
+    <color name="surface_container_lowest">#FFFFFF</color>
+    <color name="surface_container_low">#F7F2F8</color>
+    <color name="surface_container">#F1ECF2</color>
+    <color name="surface_container_high">#EBE7EC</color>
+    <color name="surface_container_highest">#E5E1E7</color>
+    <color name="surface_variant">#E5E1E7</color>
+    <color name="on_surface">#1C1B1F</color>
+    <color name="on_surface_variant">#424752</color>
+    <color name="surface_tint">#005DB7</color>
+
+    <!-- Inverse & Outline -->
+    <color name="inverse_surface">#313034</color>
+    <color name="inverse_on_surface">#F4EFF5</color>
+    <color name="inverse_primary">#A9C7FF</color>
+    <color name="outline">#727783</color>
+    <color name="outline_variant">#C2C6D4</color>
+
+    <!-- Primary (Team 1 / Blue) -->
+    <color name="primary">#004D99</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="primary_container">#1565C0</color>
+    <color name="primary_container_alpha10">#1A1565C0</color>
+    <color name="on_primary_container">#DAE5FF</color>
+    <color name="primary_fixed">#D6E3FF</color>
+    <color name="primary_fixed_dim">#A9C7FF</color>
+    <color name="on_primary_fixed">#001B3D</color>
+    <color name="on_primary_fixed_variant">#00468C</color>
+
+    <!-- Secondary (Team 2 / Warm Amber & Orange) -->
+    <color name="secondary">#A83900</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="secondary_container">#FC6018</color>
+    <color name="on_secondary_container">#531800</color>
+    <color name="secondary_fixed">#FFDBCF</color>
+    <color name="secondary_fixed_dim">#FFB59A</color>
+    <color name="on_secondary_fixed">#380D00</color>
+    <color name="on_secondary_fixed_variant">#802A00</color>
+
+    <!-- Tertiary (Leader & Victory Gold) -->
+    <color name="tertiary">#694800</color>
+    <color name="on_tertiary">#FFFFFF</color>
+    <color name="tertiary_container">#885E00</color>
+    <color name="on_tertiary_container">#FFE0B4</color>
+    <color name="tertiary_fixed">#FFDEAC</color>
+    <color name="tertiary_fixed_dim">#FFBA38</color>
+    <color name="on_tertiary_fixed">#281900</color>
+    <color name="on_tertiary_fixed_variant">#604100</color>
+
+    <!-- Error / High-Stakes Crimson -->
+    <color name="error">#BA1A1A</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="error_container">#FFDAD6</color>
+    <color name="on_error_container">#93000A</color>
+
+    <!-- Stitch Override Brand Tokens -->
+    <color name="override_primary">#1565C0</color>
+    <color name="override_secondary">#E65100</color>
+    <color name="override_tertiary">#FFB300</color>
+    <color name="override_neutral">#1C1B1F</color>
+
+    <!-- Escalation Action Row Colors (Truco Grid) -->
+    <color name="btn_minus_1_color">#727783</color>
+    <color name="btn_plus_1_color">#004D99</color>
+    <color name="btn_plus_3_color">#694800</color>
+    <color name="btn_plus_6_color">#FC6018</color>
+    <color name="btn_plus_9_color">#A83900</color>
+    <color name="btn_plus_12_color">#BA1A1A</color>
+
+    <!-- Team Scoreboard Card Canvases & Borders -->
+    <color name="card_j1_bg">#F2F5FC</color>
+    <color name="card_j2_bg">#FDF3EE</color>
+    <color name="card_j1_stroke">#D6E3FF</color>
+    <color name="card_j2_stroke">#FFDBCF</color>
     <color name="card_leader_stroke">#FFB300</color>
+
+    <!-- Translucent Surface Helpers -->
+    <color name="white_alpha80">#CCFFFFFF</color>
+    <color name="white_alpha70">#B3FFFFFF</color>
+    <color name="white_alpha60">#99FFFFFF</color>
 </resources>
